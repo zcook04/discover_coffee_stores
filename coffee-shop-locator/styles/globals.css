@@ -1,19 +1,73 @@
+
+
 :root {
   --color-1: #33281c;
   --color-2: #664625;
   --color-3: #e3b27d;
   --color-4: #e8d7c5;
   --color-5: #634e37;
-
+  --heading-text: 'IBM Plex Sans', sans-serif;
+  --normal-text: 'Open Sans', sans-serif;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: var(--normal-text);
 }
 
 html {
   color: var(--color-1);
   background-color: var(--color-4)
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-text);
+}
+
+p {
+  font-family: var(--normal-text);
+}
+
+@font-face {
+  font-family: 'IBMPlexSans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(/fonts/IBMPlexSans-Regular.ttf) format('truetype')
+}
+
+@font-face {
+  font-family: 'IBMPlexSans';
+  font-style: normal;
+  font-weight: 600;
+  src: url(/fonts/IBMPlexSans-SemiBold.ttf) format('truetype')
+}
+
+@font-face {
+  font-family: 'IBMPlexSans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/IBMPlexSans-Bold.ttf) format('truetype')
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(/fonts/OpenSans-Regular.ttf) format('truetype')
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 600;
+  src: url(/fonts/OpenSans-SemiBold.ttf) format('truetype')
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/OpenSans-Bold.ttf) format('truetype')
 }
