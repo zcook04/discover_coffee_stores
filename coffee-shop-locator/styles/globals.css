@@ -1,0 +1,19 @@
+:root {
+  --color-1: #33281c;
+  --color-2: #664625;
+  --color-3: #e3b27d;
+  --color-4: #e8d7c5;
+  --color-5: #634e37;
+
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  color: var(--color-1);
+  background-color: var(--color-4)
+}
