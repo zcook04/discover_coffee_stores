@@ -10,11 +10,18 @@
   grid-template-columns: repeat(1, minmax(0, 1fr));
   column-gap: 1.5rem;
   row-gap: 1.5rem;
+  justify-items: center;
 }
 
 .card {
   justify-content: center;
   display: flex;
+}
+
+.h2 {
+  display: block;
+  text-align: center;
+  font-family: var(--heading-text);
 }
 
 @media (min-width: 640px) {
