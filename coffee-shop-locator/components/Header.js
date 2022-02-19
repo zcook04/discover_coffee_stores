@@ -11,9 +11,9 @@ function Header({ title, description }) {
                 <meta name="description" content={description} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <header className={styles.header}>
+            {/* <header className={styles.header}>
                 <h1 className={styles.title}>{title}</h1>
-            </header>
+            </header> */}
         </>
     )
 }

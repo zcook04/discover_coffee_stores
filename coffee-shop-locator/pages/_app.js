@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Header title="Coffee Shop Locator" description="Find Local Coffee Shops Near You" />
       <Component {...pageProps} />
-      <Footer title="Footer" />
+      {/* <Footer title="Footer" /> */}
     </>
   )
 }
