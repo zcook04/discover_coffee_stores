@@ -1,0 +1,33 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+    margin: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.137);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8.5px );
+    -webkit-backdrop-filter: blur( 8.5px );
+    border-radius: 2px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    transition: opacity .5s;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--color-2);
+    cursor: pointer;
+    display: inline;
+}
+
+.cardContainer:hover {
+    opacity: .9;
+    transition: opacity .5s;
+}
+
+.h3 {
+    text-align: center;
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--color-1)
+}
