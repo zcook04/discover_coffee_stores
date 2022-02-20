@@ -1,27 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import Image from 'next/image'
 import styles from '../styles/Hero.module.css'
 import useTrackLocation from '../hooks/use-track-location'
 import { getStores } from '../lib/coffee-stores'
+import { StoreContext, ACTION_TYPES } from '../pages/_app'
 
-function Hero({ title, subtitle, handleCoffeeStores }) {
+function Hero({ title, subtitle }) {
 
-    const { handleTrackLocation, latLong, locationErrMsg, isFindingLocation } = useTrackLocation()
+    const { handleTrackLocation, locationErrMsg, isFindingLocation } = useTrackLocation()
 
     const handleSearchNearby = () => {
         handleTrackLocation()
     }
 
+    const { dispatch, state } = useContext(StoreContext)
+
     useEffect(async () => {
-        if (latLong) {
+        if (state.latLong) {
             try {
-                const fetchedStores = await getStores(latLong)
-                handleCoffeeStores(fetchedStores, true)
+                const fetchedStores = await getStores(state.latLong)
+                dispatch({
+                    type: ACTION_TYPES.SET_COFFEE_STORES,
+                    payload: { coffeeStores: fetchedStores }
+                })
             } catch (error) {
                 console.log({ error })
             }
         }
-    }, [latLong])
+    }, [state.latLong])
 
     return (
         <section className={styles.outerContainer}>

@@ -2,7 +2,8 @@ import styles from '../styles/Home.module.css'
 import Hero from '../components/Hero'
 import CoffeeCard from '../components/CoffeeCard'
 import { getStores } from '../lib/coffee-stores'
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
+import { ACTION_TYPES, StoreContext } from './_app'
 
 export async function getStaticProps(context) {
 
@@ -19,7 +20,21 @@ export async function getStaticProps(context) {
 
 export default function Home(props) {
 
-  const [coffeeStores, setCoffeeStores] = useState(props.coffeeStores)
+  const { dispatch, state } = useContext(StoreContext)
+  const { coffeeStores } = state
+
+  useEffect(async () => {
+    if (coffeeStores.length === 0) {
+      const fetchedStores = await getStores()
+      dispatch({
+        type: ACTION_TYPES.SET_COFFEE_STORES,
+        payload: { coffeeStores: fetchedStores }
+      })
+    }
+
+  }, [])
+
+
   const [locationHeader, setLocationHeader] = useState('New York Coffee Stores')
 
   const handleCoffeeStores = (stores, nearby = false) => {
