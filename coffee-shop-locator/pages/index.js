@@ -3,7 +3,7 @@ import Hero from '../components/Hero'
 import CoffeeCard from '../components/CoffeeCard'
 import { getStores } from '../lib/coffee-stores'
 import { useState, useContext, useEffect } from 'react'
-import { ACTION_TYPES, StoreContext } from './_app'
+import { ACTION_TYPES, StoreContext } from '../store/store-context'
 
 export async function getStaticProps(context) {
 

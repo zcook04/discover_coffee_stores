@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 import styles from '../../styles/Coffee-store.module.css'
 import { getStores } from '../../lib/coffee-stores'
-import { StoreContext } from '../_app'
+import { StoreContext } from '../../store/store-context'
 import { isEmpty } from '../../utils'
 
 export async function getStaticProps({ params }) {

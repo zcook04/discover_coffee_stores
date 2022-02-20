@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Hero.module.css'
 import useTrackLocation from '../hooks/use-track-location'
 import { getStores } from '../lib/coffee-stores'
-import { StoreContext, ACTION_TYPES } from '../pages/_app'
+import { StoreContext, ACTION_TYPES } from '../store/store-context'
 
 function Hero({ title, subtitle }) {
 
