@@ -9,7 +9,7 @@ function CoffeeCard({ name, imageUrl, imageAlt, href }) {
             <Link href={href}><a className={styles.link}>
 
                 <h3 className={styles.h3}>{name}</h3>
-                <Image src={imageUrl} alt={imageAlt} width={300} height={200} />
+                <Image className={styles.cardImage} src={imageUrl} alt={imageAlt} width={300} height={200} />
 
             </a></Link>
         </article>

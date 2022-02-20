@@ -1,0 +1,89 @@
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+    text-align: left;
+    min-height: 50vh;
+    padding-top: 1rem;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.leftSide {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+
+}
+
+.rightSide {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+}
+
+.image {
+    width: 100%;
+    position: relative;
+    height: 500px;
+    border: 1px solid var(--color-2);
+    box-shadow: 1px 1px 5px 1px rgba(53, 35, 1, 0.411);
+}
+
+.link {
+    cursor: pointer;
+    align-self: left;
+    align-content: left;
+    text-align: left;
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+    transition: background-color .25s, color .25s;
+}
+
+.link:hover {
+    color: var(--color-3);
+    transition: background-color .25s, color .25s;
+}
+
+.h2 {
+    margin-bottom: .25rem;
+}
+
+.upvoteContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    gap: .5rem;
+    justify-content: center;
+}
+
+.upvotes {
+    
+}
+
+.upvoteButton {
+    display: inline;
+    background-color: var(--color-5);
+    color: var(--color-4);
+    padding: .25rem .5rem;
+    cursor: pointer;
+    transition: background-color .25s, color .25s;
+    border: 0;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-5);
+    box-shadow: 1px 1px 3px 1px var(--color-5);
+}
+
+.upvoteButton:hover {
+    background-color: var(--color-3);
+    color: var(--color-5);
+    transition: background-color .25s, color .25s;
+}
+
+.upvoteButtonContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
