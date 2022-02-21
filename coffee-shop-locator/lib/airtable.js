@@ -12,3 +12,11 @@ export const getMinifiedRecord = (record) => {
 export const getMinifiedRecords = (records) => {
     return records.map(record => getMinifiedRecord(record))
 }
+
+export const findRecordByFilter = async (id) => {
+    const findCoffeeStoreRecords = await table.select({
+        filterByFormula: `id="${id}"`
+    }).firstPage()
+
+    return getMinifiedRecords(findCoffeeStoreRecords)
+}
