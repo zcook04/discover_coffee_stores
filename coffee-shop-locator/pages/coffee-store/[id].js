@@ -8,6 +8,9 @@ import styles from '../../styles/Coffee-store.module.css'
 import { getStores } from '../../lib/coffee-stores'
 import { StoreContext } from '../../store/store-context'
 import { isEmpty } from '../../utils'
+import useSWR from 'swr'
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export async function getStaticProps({ params }) {
     const stores = await getStores()
@@ -101,6 +104,19 @@ function CoffeeStore(initialProps) {
     }, [coffeeStore])
     const [upvotes, setUpvotes] = useState(1)
 
+    const { data, error } = useSWR(`/api/getCoffeeStoreById?id=${coffeeStore.id}`, fetcher)
+
+    useEffect(() => {
+        if (data && data.length > 0) {
+            setCoffeeStore(data[0])
+            setUpvotes(data[0].voting)
+        }
+    }, [data])
+
+    if (error) {
+        return <div>Something went wrong retrieving the coffee store.</div>
+    }
+
     if (router.isFallback) {
         return <div>Loading content, please wait.</div>
     }
@@ -108,6 +124,8 @@ function CoffeeStore(initialProps) {
     const handleUpvote = () => {
         setUpvotes(upvotes + 1)
     }
+
+
 
 
     return (
@@ -122,7 +140,7 @@ function CoffeeStore(initialProps) {
                     <h2 className={styles.h2}>{name || 'loading'}</h2>
                     <p className={styles.address}>{formattedAddress || 'loading'}</p>
                     <div className={styles.upvoteContainer}>
-                        <div className={styles.upvotes}>{upvotes || 'loading'} People upvoted this cafe!</div>
+                        <div className={styles.upvotes}>{upvotes || 0} People upvoted this cafe!</div>
                         <div className={styles.upvoteButtonContainer}><button className={styles.upvoteButton} onClick={handleUpvote}>Upvote</button><Image className={styles.thumbup} src="/static/icons/thumbup.svg" width={25} height={25} /></div>
                     </div>
 

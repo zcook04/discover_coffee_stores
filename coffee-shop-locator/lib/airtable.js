@@ -5,6 +5,7 @@ export const table = base('coffee-stores')
 
 export const getMinifiedRecord = (record) => {
     return {
+        recordId: record.id,
         ...record.fields,
     }
 }
@@ -19,4 +20,22 @@ export const findRecordByFilter = async (id) => {
     }).firstPage()
 
     return getMinifiedRecords(findCoffeeStoreRecords)
+}
+
+export const incrementVoting = async (id) => {
+    const record = await findRecordByFilter(id)
+
+    const currentVotes = parseInt(record[0].voting)
+    const updatedVotes = currentVotes + 1
+
+    return await table.update(
+        [
+            {
+                id: record[0].recordId,
+                fields: {
+                    voting: updatedVotes
+                }
+            },
+        ]
+    )
 }
