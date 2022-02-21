@@ -8,7 +8,7 @@ const createCoffeeStore = async (req, res) => {
                 return res.status(422).json({ msg: "ID or Name is required but missing." })
 
             const findCoffeeStoreRecords = await table.select({
-                filterByFormula: `id=${id}`
+                filterByFormula: `id="${id}"`
             }).firstPage()
 
             if (findCoffeeStoreRecords.length !== 0) {
