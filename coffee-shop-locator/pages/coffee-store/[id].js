@@ -99,13 +99,15 @@ function CoffeeStore(initialProps) {
         }
 
     }, [coffeeStore])
-    // const { name, imgUrl, location: { formatted_address } } = coffeeStore
     const [upvotes, setUpvotes] = useState(1)
 
     if (router.isFallback) {
         return <div>Loading content, please wait.</div>
     }
 
+    const handleUpvote = () => {
+        setUpvotes(upvotes + 1)
+    }
 
 
     return (
@@ -121,7 +123,7 @@ function CoffeeStore(initialProps) {
                     <p className={styles.address}>{formattedAddress || 'loading'}</p>
                     <div className={styles.upvoteContainer}>
                         <div className={styles.upvotes}>{upvotes || 'loading'} People upvoted this cafe!</div>
-                        <div className={styles.upvoteButtonContainer}><button className={styles.upvoteButton} onClick={() => setUpvotes(upvotes++)}>Upvote</button><Image className={styles.thumbup} src="/static/icons/thumbup.svg" width={25} height={25} /></div>
+                        <div className={styles.upvoteButtonContainer}><button className={styles.upvoteButton} onClick={handleUpvote}>Upvote</button><Image className={styles.thumbup} src="/static/icons/thumbup.svg" width={25} height={25} /></div>
                     </div>
 
                 </div>
