@@ -72,7 +72,6 @@ function CoffeeStore(initialProps) {
                     id: store.id
                 })
             })
-            const dbCoffeeStore = response.json()
         } catch (err) {
             console.error('Error creating coffee store', err)
         }
@@ -102,7 +101,7 @@ function CoffeeStore(initialProps) {
         }
 
     }, [coffeeStore])
-    const [upvotes, setUpvotes] = useState(1)
+    const [upvotes, setUpvotes] = useState('')
 
     const { data, error } = useSWR(`/api/getCoffeeStoreById?id=${coffeeStore.id}`, fetcher)
 
@@ -121,8 +120,25 @@ function CoffeeStore(initialProps) {
         return <div>Loading content, please wait.</div>
     }
 
-    const handleUpvote = () => {
-        setUpvotes(upvotes + 1)
+    const handleUpvote = async () => {
+        const coffeeStoreFromContext = coffeeStores.find((store) => {
+            return store.id.toString() === id;
+        })
+        try {
+            const response = await fetch('/api/favoriteCoffeeStoreById', {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: coffeeStoreFromContext.id
+                })
+            })
+            if (response)
+                setUpvotes(upvotes + 1)
+        } catch (err) {
+            console.error('Error creating coffee store', err)
+        }
     }
 
 
