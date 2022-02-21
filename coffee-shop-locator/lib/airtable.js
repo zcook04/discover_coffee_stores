@@ -26,7 +26,7 @@ export const incrementVoting = async (id) => {
     const record = await findRecordByFilter(id)
 
     const currentVotes = parseInt(record[0].voting)
-    const updatedVotes = currentVotes + 1
+    const updatedVotes = parseInt(currentVotes + 1)
 
     return await table.update(
         [

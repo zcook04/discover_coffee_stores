@@ -101,14 +101,14 @@ function CoffeeStore(initialProps) {
         }
 
     }, [coffeeStore])
-    const [upvotes, setUpvotes] = useState('')
+    const [upvotes, setUpvotes] = useState(0)
 
     const { data, error } = useSWR(`/api/getCoffeeStoreById?id=${coffeeStore.id}`, fetcher)
 
     useEffect(() => {
         if (data && data.length > 0) {
             setCoffeeStore(data[0])
-            setUpvotes(data[0].voting)
+            setUpvotes(parseInt(data[0].voting))
         }
     }, [data])
 
