@@ -21,11 +21,12 @@ export async function getStaticProps(context) {
 export default function Home(props) {
 
   const { dispatch, state } = useContext(StoreContext)
-  const { coffeeStores } = state
+  const { coffeeStores, latLong } = state
 
   useEffect(async () => {
     if (coffeeStores.length === 0) {
-      const fetchedStores = await getStores()
+      const res = await fetch(`/api/getCoffeeStoresByLocation?latLong=40.72446861347544,-73.98449305630399&limit=9`)
+      const fetchedStores = await res.json()
       dispatch({
         type: ACTION_TYPES.SET_COFFEE_STORES,
         payload: { coffeeStores: fetchedStores }
